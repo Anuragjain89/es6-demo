@@ -1,12 +1,19 @@
-export function getImage(url = mandatoryArgument()) {
-    return new Promise((resolve, reject) => {
-        var image = new Image();
-        image.onload = resolve(image);
-        image.onerror = reject(url);
-        image.src = url;
-    });
+function mandatoryArg (message) {
+    message = message || 'Mandatory argument is missing';
+    throw new Error(message);
+}
+
+function getImage (url) {
+    var url                 = url || mandatoryArg();
+    var imageDefer = $.Deferred();
+
+    var image               = new Image();
+    image.onload            = imageDefer.resolve(image);
+    image.onerror           = imageDefer.reject(url);
+    image.src               = url;
+
+    return imageDefer.promise();
 };
 
-export function mandatoryArgument(message = 'Mandatory argument is missing') {
-    throw new Error(message);
-};
+module.exports.mandatoryArg = mandatoryArg;
+module.exports.getImage = getImage;

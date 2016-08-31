@@ -1,4 +1,4 @@
-import {Game} from './game.js'
+var Game = require('./game').Game;
 
 // ----------------------------------------------------------------------------------------------------------
 // HANDLE MULTIPLE BROWSERS

@@ -1,4 +1,4 @@
-const constants = {
+module.exports.constants = {
     bgImageURL: 'images/background.png',
     heroImageURL: 'images/hero.png',
     monsterImageURL: 'images/monster.png',
@@ -10,5 +10,3 @@ const constants = {
     movable_type: 'MOVABLE_TYPE',
     immovable_type: 'IMMOVABLE_TYPE'
 };
-
-export default constants;

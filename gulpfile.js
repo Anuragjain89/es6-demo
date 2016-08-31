@@ -4,10 +4,9 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var watchify = require('watchify');
-var babel = require('babelify');
 
 function compile(watch) {
-  var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel));
+  var bundler = watchify(browserify('./src/index.js', { debug: true }));
 
   function rebundle() {
     bundler.bundle()
