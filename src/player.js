@@ -12,13 +12,14 @@ export class Player {
         if (this.constructor === Player) { throw new TypeError("Cannot construct Abstract instances directly"); }
         if (this.reset === undefined) { throw new Error("Mandatory method not implemented in sub-class"); }
 
-        this.image = image;
-        this.type  = type;
-        this.speed = speed;
+        this.image        = image;
+        this.type         = type;
+        this.speed        = speed;
+        this.maxWidth     = maxWidth;
+        this.maxHeight    = maxHeight;
         this.x_coordinate = 0;
         this.y_coordinate = 0;
-        this.maxWidth = maxWidth;
-        this.maxHeight = maxHeight;
+
     }
 
     updatePosition(keysDown = mandatoryArg(), deltaDuration = mandatoryArg()) {

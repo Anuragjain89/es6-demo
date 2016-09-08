@@ -5,7 +5,7 @@ import {Player, Hero, Monster} from './Player';
 export class Game {
     constructor(width = 512, height = 480) {
         this.score         = 0;
-        this.canvas = document.createElement('canvas');
+        this.canvas        = document.createElement('canvas');
         this.canvas.width  = width;
         this.canvas.height = height;
         document.body.appendChild(this.canvas);
@@ -26,26 +26,25 @@ export class Game {
                     setTimeout(this.render.bind(this), 0);
                     this.addEvents();
                     resolve(this);
-                })
-        })
-
+                });
+        });
     }
 
     render() {
         let canvasContext = this.canvas.getContext("2d");
-		canvasContext.drawImage(this.bgImage, 0, 0);
-		canvasContext.drawImage(this.heroImage, this.hero.x_coordinate, this.hero.y_coordinate);
-		canvasContext.drawImage(this.monsterImage, this.monster.x_coordinate, this.monster.y_coordinate);
-        canvasContext.fillStyle = "rgb(0, 0, 0)";
-        canvasContext.font = "24px Helvetica";
-        canvasContext.textAlign = "left";
+        canvasContext.drawImage(this.bgImage, 0, 0);
+        canvasContext.drawImage(this.heroImage, this.hero.x_coordinate, this.hero.y_coordinate);
+        canvasContext.drawImage(this.monsterImage, this.monster.x_coordinate, this.monster.y_coordinate);
+        canvasContext.fillStyle    = "rgb(0, 0, 0)";
+        canvasContext.font         = "24px Helvetica";
+        canvasContext.textAlign    = "left";
         canvasContext.textBaseline = "top";
         canvasContext.fillText(`Goblins caught: ${this.score}`, constants.IMAGE_WIDTH, constants.IMAGE_WIDTH);
     }
 
     addEvents() {
         var that = this
-        addEventListener("keydown", (e) => that.keysDown[e.keyCode] = true , false);
+        addEventListener("keydown", (e) => that.keysDown[e.keyCode] = true, false);
         addEventListener("keyup", (e) => delete that.keysDown[e.keyCode], false);
     }
 
